@@ -2,6 +2,10 @@
 <resources>
 
     <string name="app_name">龙城助手</string>
-    <string name="hello_world">Hello world!</string>
-
+    <string name="nav_website">oudezhinu.site</string>
+    <string name="settings">设置</string>
+    <string name="information">关于</string>
+    <string name="tab_shop">旅行商店</string>
+    <string name="tab_library">大图书馆</string>
+    
 </resources>
