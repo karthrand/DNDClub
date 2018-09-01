@@ -8,22 +8,34 @@ import android.support.design.widget.*;
 import android.support.v4.widget.*;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.*;
 import android.content.*;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.*;
 import com.ashokvarma.bottomnavigation.*;
+import com.oude.dndclub.ui.fragment.*;
+import android.view.*;
 
 public class MainActivity extends AppCompatActivity 
 {
+    //公共布局
     private NavigationView navView;
     private DrawerLayout mDrawerLayout;
     private BottomNavigationBar bottomNavigationBar;
+    //Fragment
+    private int index;
+    private int currentTabIndex=0;
+    private Fragment[] mFragments;
+    private BookFragment mBookFragment;
+    private ShopFragment mShopFragment;
+    private ToolFragment mToolFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         initView();
         initBottomNavigationBar();
+        initFragment();
     }
 
     //初始化布局
@@ -49,6 +61,11 @@ public class MainActivity extends AppCompatActivity
         //设置底部导航栏
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
 
+        //设置Fragment初始化
+        mShopFragment = new ShopFragment();
+        mBookFragment = new BookFragment();
+        mToolFragment = new ToolFragment();
+		mFragments = new Fragment[]{mShopFragment,mBookFragment,mToolFragment};      
 
     }
 
@@ -99,7 +116,7 @@ public class MainActivity extends AppCompatActivity
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.help:
-                //gethelp();                          
+                prompt();                       
                 break;
             default:
         }
@@ -121,10 +138,76 @@ public class MainActivity extends AppCompatActivity
 
         bottomNavigationBar
             .addItem(new BottomNavigationItem(R.drawable.ic_shop, R.string.tab_shop))
-            .addItem(new BottomNavigationItem(R.drawable.ic_book, R.string.tab_library))
+            .addItem(new BottomNavigationItem(R.drawable.ic_book, R.string.tab_book))
+            .addItem(new BottomNavigationItem(R.drawable.ic_tool, R.string.tab_tool))
             //设置默认选择的按钮
             .setFirstSelectedPosition(0)
             .initialise();
+    }
+
+    //初始化Fragment
+    private void initFragment()
+    {
+        //设置默认选择的Fragment
+        FragmentTransaction init = getSupportFragmentManager().beginTransaction();
+        init.add(R.id.fragment_main, mFragments[0]);
+        init.show(mFragments[0]).commit();
+        //设置lab点击事件
+        bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(int position)
+                {
+                    switch (position)
+                    {
+                        case 0:
+                            index = 0;
+                            break;
+                        case 1:
+                            index = 1;
+                            break;
+                        case 2:
+                            index = 2;
+                            break;
+                    }
+                    if (currentTabIndex != index)
+                    {
+                        FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
+                        trx.hide(mFragments[currentTabIndex]);
+                        if (!mFragments[index].isAdded())
+                        {
+                            trx.add(R.id.fragment_main, mFragments[index]);
+                        }
+                        trx.show(mFragments[index]).commit();
+                    }
+                    currentTabIndex = index;
+                }
+
+                @Override
+                public void onTabUnselected(int position)
+                {
+                }
+
+                @Override
+                public void onTabReselected(int position)
+                {
+                }
+            });
+    }
+
+    //右上角提示功能
+    private void prompt()
+    {
+        switch (index)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
     }
 
 }
