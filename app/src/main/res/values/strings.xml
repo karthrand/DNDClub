@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">龙城助手</string>
     <string name="nav_website">oudezhinu.site</string>
     <string name="settings">设置</string>
@@ -8,4 +7,16 @@
     <string name="tab_shop">旅行商店</string>
     <string name="tab_book">大图书馆</string>
     <string name="tab_tool">功能集合</string>
+    <!-- 设置页-->
+    <string name="pref_header_general">通用</string>
+    <string name="pref_username">用户名</string>
+    <string name="pref_default_name">匿名</string>
+    <string name="pref_mail">邮箱</string>
+    <string name="pref_mysql_ip">远程Mysql地址</string>
+    <string name="pref_default_mysqlip">114.115.162.138</string>
+    <string name="pref_mysql_username">远程Mysql用户名</string>
+    <string name="pref_default_mysqlname">trpg</string>
+    <string name="pref_mysql_pwd">远程Mysql密码</string>
+    <string name="pref_default_mysqlpwd">trpg123</string>
+    
 </resources>

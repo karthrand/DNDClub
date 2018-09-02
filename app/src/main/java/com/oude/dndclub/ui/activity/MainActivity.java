@@ -86,11 +86,9 @@ public class MainActivity extends AppCompatActivity
             int id = p1.getItemId();
             switch (id)
             {
-                case R.id.nav_settings:
-                    /*
-                     Intent intent2 =new Intent(MainActivity.this, SettingActivity.class);
-                     startActivity(intent2);
-                     */
+                case R.id.nav_settings:         
+                    Intent intent_settings =new Intent(MainActivity.this, SettingActivity.class);
+                    startActivity(intent_settings);                    
                     break;
                 case R.id.nav_information:
                     /*
