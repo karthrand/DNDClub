@@ -9,5 +9,9 @@
             android:id="@+id/nav_information"
             android:icon="@drawable/information"
             android:title="@string/information" />
+		<item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/help"
+            android:title="@string/help" />
     </group>
 </menu>

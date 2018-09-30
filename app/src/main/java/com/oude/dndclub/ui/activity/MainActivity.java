@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity
                      startActivity(intent3);
                      */
                     break;
+				case R.id.nav_help:
+					break;
                 default:
                     break;
             }
