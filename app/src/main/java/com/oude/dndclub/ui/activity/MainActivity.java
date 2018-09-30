@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
         mShopFragment = new ShopFragment();
         mBookFragment = new BookFragment();
         mToolFragment = new ToolFragment();
-		mFragments = new Fragment[]{mShopFragment,mBookFragment,mToolFragment};      
+		mFragments = new Fragment[]{mShopFragment,mBookFragment,mToolFragment};
 
     }
 

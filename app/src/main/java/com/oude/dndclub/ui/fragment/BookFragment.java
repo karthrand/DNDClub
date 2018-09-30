@@ -12,4 +12,6 @@ public class BookFragment extends Fragment
         View view=inflater.inflate(R.layout.fragment_book,container,false);       
         return view;
 	}
+    
+    
 }
