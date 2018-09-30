@@ -21,12 +21,14 @@ public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.Vi
         this.mOnItemClickListener = onItemClickListener;
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder
+	{
         View CommonListView;
         ImageView CommonListImage;
         TextView CommonListName;
 
-        public ViewHolder(View view) {
+        public ViewHolder(View view)
+		{
             super(view);
             CommonListView = view;
             CommonListImage = (ImageView) view.findViewById(R.id.list_image);
@@ -34,38 +36,45 @@ public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.Vi
         }
     }
 
-    public CommonListAdapter(Context context,List<CommonList> otherList) {
+    public CommonListAdapter(Context context, List<CommonList> otherList)
+	{
         mCommonList = otherList;
         mContext = context;
     }
     //点击接口
-    public interface OnItemClickListener {
+    public interface OnItemClickListener
+	{
         void onClick(int position);
         void onLongClick(int position);
     }
-    
+
 	@Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+	{
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_commonlist, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
 	@Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position)
+	{
         CommonList otherList = mCommonList.get(position);
         holder.CommonListImage.setImageResource(otherList.getImageId());
         holder.CommonListName.setText(otherList.getName());
-        if( mOnItemClickListener!= null){
-            holder.itemView.setOnClickListener( new View.OnClickListener() {
+        if (mOnItemClickListener != null)
+		{
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v)
+					{
                         mOnItemClickListener.onClick(position);
                     }
                 });
-            holder.itemView.setOnLongClickListener( new View.OnLongClickListener() {
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
-                    public boolean onLongClick(View v) {
+                    public boolean onLongClick(View v)
+					{
                         mOnItemClickListener.onLongClick(position);
                         return true;
                     }
@@ -74,7 +83,8 @@ public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.Vi
     }
 
 	@Override
-    public int getItemCount() {
+    public int getItemCount()
+	{
         return mCommonList.size();
     }
 }

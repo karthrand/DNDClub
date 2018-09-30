@@ -22,6 +22,16 @@
 	<string name="shop_recyclerview1">武器商店</string>
 	<string name="shop_recyclerview2">防具商店</string>
 	<string name="shop_recyclerview3">物品商店</string>
-	<string name="shop_recyclerview4">旅行商人</string>
-    
+	<string name="shop_recyclerview4">魔法商店</string>
+	<string name="shop_recyclerview5">旅行商人</string>
+    <!-- Book Fragment -->
+	<string name="book_recyclerview1">法师法术</string>
+	<string name="book_recyclerview2">牧师法术</string>
+	<string name="book_recyclerview3">游侠法术</string>
+	<string name="book_recyclerview4">诗人法术</string>
+	<string name="book_recyclerview5">德鲁伊法术</string>
+	<string name="book_recyclerview6">圣武士法术</string>
+	<!-- Tool Fragment -->
+	<string name="tool_recyclerview1">模拟骰子</string>
+	<string name="tool_recyclerview2">角色购点</string>
 </resources>
