@@ -1,53 +1,22 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    
-    <EditTextPreference
-        android:capitalize="words"
-        android:defaultValue="@string/pref_default_name"
-        android:inputType="textCapWords"
-        android:key="user_name"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/pref_username"/>
-    
-    <EditTextPreference
-        android:capitalize="words"
-        android:defaultValue="@null"
-        android:inputType="textCapWords"
-        android:key="user_mail"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/pref_mail"/>
-    
-    <EditTextPreference
-        android:capitalize="words"
-        android:defaultValue="@string/pref_default_mysqlip"
-        android:inputType="textCapWords"
-        android:key="mysql_ip"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/pref_mysql_ip"/>
-    
-    <EditTextPreference
-        android:capitalize="words"
-        android:defaultValue="@string/pref_default_mysqlname"
-        android:inputType="textCapWords"
-        android:key="mysql_username"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/pref_mysql_username"/>
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/pref_source_titles"
+        android:entryValues="@array/pref_source_values"
+        android:key="source"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_source"/>
 
     <EditTextPreference
         android:capitalize="words"
-        android:defaultValue="@string/pref_default_mysqlpwd"
+        android:defaultValue="/dndclub"
         android:inputType="textCapWords"
-        android:key="mysql_pwd"
+        android:key="local_path"
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="@string/pref_mysql_pwd"/>
+        android:title="@string/pref_path"/>
 
 </PreferenceScreen>

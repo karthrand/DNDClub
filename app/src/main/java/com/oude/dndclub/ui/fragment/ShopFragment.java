@@ -7,6 +7,7 @@ import java.util.*;
 import com.oude.dndclub.*;
 import com.oude.dndclub.adapter.*;
 import com.oude.dndclub.bean.*;
+import com.oude.dndclub.utils.RecycleItemDecoration;
 
 public class ShopFragment extends Fragment
 {
@@ -32,6 +33,7 @@ public class ShopFragment extends Fragment
 		RecyclerView recyclerView=getActivity().findViewById(R.id.shopRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(new RecycleItemDecoration(getActivity(), RecycleItemDecoration.VERTICAL_LIST));
         CommonListAdapter adapter =new CommonListAdapter(getActivity(), list);
         recyclerView.setAdapter(adapter);
 		adapter.setOnItemClickListener(new ShopOnClickListener());

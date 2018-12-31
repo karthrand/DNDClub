@@ -4,12 +4,16 @@
     <string name="nav_website">oudezhinu.site</string>
     <string name="settings">设置</string>
     <string name="information">关于</string>
-	<string name="help">帮助</string>
+    <string name="help">帮助</string>
+    <string name="update">更新</string>
+    <string name="feedback">反馈</string>
     <string name="tab_shop">冒险商店</string>
     <string name="tab_book">大图书馆</string>
     <string name="tab_tool">功能集合</string>
     <!-- 设置页 -->
     <string name="pref_header_general">通用</string>
+    <string name="pref_header_database">数据库</string>
+    <string name="pref_header_user">账户</string>
     <string name="pref_username">用户名</string>
     <string name="pref_default_name">匿名</string>
     <string name="pref_mail">邮箱</string>
@@ -19,20 +23,30 @@
     <string name="pref_default_mysqlname">trpg</string>
     <string name="pref_mysql_pwd">远程Mysql密码</string>
     <string name="pref_default_mysqlpwd">trpg123</string>
-	<!-- Shop Fragment -->
-	<string name="shop_recyclerview1">武器商店</string>
-	<string name="shop_recyclerview2">防具商店</string>
-	<string name="shop_recyclerview3">物品商店</string>
-	<string name="shop_recyclerview4">魔法商店</string>
-	<string name="shop_recyclerview5">旅行商人</string>
+    <string name="pref_source">应用资料版本</string>
+    <string name="pref_path">本地保存路径</string>
+    <string-array name="pref_source_titles">
+        <item>3R</item>
+        <item>5E</item>
+    </string-array>
+    <string-array name="pref_source_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <!-- Shop Fragment -->
+    <string name="shop_recyclerview1">武器商店</string>
+    <string name="shop_recyclerview2">防具商店</string>
+    <string name="shop_recyclerview3">物品商店</string>
+    <string name="shop_recyclerview4">魔法商店</string>
+    <string name="shop_recyclerview5">旅行商人</string>
     <!-- Book Fragment -->
-	<string name="book_recyclerview1">法师法术</string>
-	<string name="book_recyclerview2">牧师法术</string>
-	<string name="book_recyclerview3">游侠法术</string>
-	<string name="book_recyclerview4">诗人法术</string>
-	<string name="book_recyclerview5">德鲁伊法术</string>
-	<string name="book_recyclerview6">圣武士法术</string>
-	<!-- Tool Fragment -->
-	<string name="tool_recyclerview1">模拟骰子</string>
-	<string name="tool_recyclerview2">角色购点</string>
+    <string name="book_recyclerview1">法师法术</string>
+    <string name="book_recyclerview2">牧师法术</string>
+    <string name="book_recyclerview3">游侠法术</string>
+    <string name="book_recyclerview4">诗人法术</string>
+    <string name="book_recyclerview5">德鲁伊法术</string>
+    <string name="book_recyclerview6">圣武士法术</string>
+    <!-- Tool Fragment -->
+    <string name="tool_recyclerview1">模拟骰子</string>
+    <string name="tool_recyclerview2">角色购点</string>
 </resources>

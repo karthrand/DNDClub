@@ -3,4 +3,12 @@
         android:fragment="com.oude.dndclub.ui.activity.SettingActivity$GeneralPreferenceFragment"
         android:icon="@drawable/ic_info_black_24dp"
         android:title="@string/pref_header_general"/>
+    <header
+        android:fragment="com.oude.dndclub.ui.activity.SettingActivity$UserPreferenceFragment"
+        android:icon="@drawable/ic_user_black_24dp"
+        android:title="@string/pref_header_user"/>
+    <header
+        android:fragment="com.oude.dndclub.ui.activity.SettingActivity$DatabasePreferenceFragment"
+        android:icon="@drawable/ic_database_black_24dp"
+        android:title="@string/pref_header_database"/>
 </preference-headers>

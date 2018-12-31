@@ -6,12 +6,20 @@
             android:icon="@drawable/settings"
             android:title="@string/settings" />
         <item
-            android:id="@+id/nav_information"
-            android:icon="@drawable/information"
-            android:title="@string/information" />
-		<item
             android:id="@+id/nav_help"
             android:icon="@drawable/help"
             android:title="@string/help" />
+        <item
+            android:id="@+id/nav_information"
+            android:icon="@drawable/information"
+            android:title="@string/information" />
+        <item
+            android:id="@+id/nav_update"
+            android:icon="@drawable/update"
+            android:title="@string/update" />
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/feedback"
+            android:title="@string/feedback" />
     </group>
 </menu>

@@ -1,6 +1,5 @@
 package com.oude.dndclub.ui.activity;
 
-import android.app.*;
 import android.os.*;
 import com.oude.dndclub.R;
 import android.support.v7.widget.Toolbar;
