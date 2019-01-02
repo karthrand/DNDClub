@@ -42,9 +42,9 @@ public class ToolFragment extends Fragment
 	//RecyclerView显示内容
     private void initToollist()
     {
-        CommonList  list1 = new CommonList(getResources().getString(R.string.tool_recyclerview1), R.drawable.ic_launcher);
+        CommonList  list1 = new CommonList(getResources().getString(R.string.tool_recyclerview1), R.drawable.ic_dice);
         list.add(list1);
-        CommonList  list2 = new CommonList(getResources().getString(R.string.tool_recyclerview2), R.drawable.ic_launcher);
+        CommonList  list2 = new CommonList(getResources().getString(R.string.tool_recyclerview2), R.drawable.ic_buy);
         list.add(list2);
     }
 

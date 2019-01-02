@@ -42,15 +42,15 @@ public class ShopFragment extends Fragment
 	//RecyclerView显示内容
     private void initShoplist()
     {
-        CommonList  list1 = new CommonList(getResources().getString(R.string.shop_recyclerview1), R.drawable.ic_launcher);
+        CommonList  list1 = new CommonList(getResources().getString(R.string.shop_recyclerview1), R.drawable.ic_shop_recyclerview1);
         list.add(list1);
-        CommonList  list2 = new CommonList(getResources().getString(R.string.shop_recyclerview2), R.drawable.ic_launcher);
+        CommonList  list2 = new CommonList(getResources().getString(R.string.shop_recyclerview2), R.drawable.ic_shop_recyclerview2);
         list.add(list2);
-        CommonList  list3 = new CommonList(getResources().getString(R.string.shop_recyclerview3), R.drawable.ic_launcher);
+        CommonList  list3 = new CommonList(getResources().getString(R.string.shop_recyclerview3), R.drawable.ic_shop_recyclerview3);
         list.add(list3);
-        CommonList  list4 = new CommonList(getResources().getString(R.string.shop_recyclerview4), R.drawable.ic_launcher);
+        CommonList  list4 = new CommonList(getResources().getString(R.string.shop_recyclerview4), R.drawable.ic_shop_recyclerview4);
 		list.add(list4);
-        CommonList  list5 = new CommonList(getResources().getString(R.string.shop_recyclerview5), R.drawable.ic_launcher);
+        CommonList  list5 = new CommonList(getResources().getString(R.string.shop_recyclerview5), R.drawable.ic_shop_recyclerview5);
 		list.add(list5);
     }
 
