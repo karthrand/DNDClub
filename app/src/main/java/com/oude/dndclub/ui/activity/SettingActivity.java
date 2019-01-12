@@ -7,18 +7,14 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
-
 import java.util.*;
 
-import android.widget.*;
 import android.view.*;
 import android.preference.*;
-import android.content.*;
+
 
 import com.oude.dndclub.R;
 

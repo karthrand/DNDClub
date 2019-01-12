@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/shop_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <LinearLayout
+        android:id="@+id/shopLinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/shop_toolbar"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/search"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/shop_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:layout_marginLeft="5dp"
+            android:gravity="start|center_vertical"
+            android:hint="输入查询的关键字"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/shopLinearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/shopLinearLayout1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/filter"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/shop_Spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dropDownHorizontalOffset="-50dp"
+            android:overlapAnchor="false"
+            android:paddingLeft="5dp"
+            android:popupBackground="@android:color/white"
+            android:spinnerMode="dropdown" />
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/shop_Spinner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dropDownHorizontalOffset="-50dp"
+            android:overlapAnchor="false"
+            android:paddingLeft="5dp"
+            android:popupBackground="@android:color/white"
+            android:spinnerMode="dropdown" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/shopLinearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/shopLinearLayout2"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/operation"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/shop_query"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/query"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/shop_insert"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/insert"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/shopView1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/shopLinearLayout3"
+        android:background="@color/black" />
+
+    <include
+        layout="@layout/recycleview_shop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/shopView1" />
+
+</RelativeLayout>
