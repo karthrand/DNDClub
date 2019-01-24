@@ -25,9 +25,7 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activity.ShopActivity">
-        </activity>
+        <activity android:name=".ui.activity.ShopActivity"></activity>
     </application>
 
 </manifest>

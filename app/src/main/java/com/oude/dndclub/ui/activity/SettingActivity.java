@@ -11,10 +11,8 @@ import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import java.util.*;
-
 import android.view.*;
 import android.preference.*;
-
 
 import com.oude.dndclub.R;
 

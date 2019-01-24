@@ -4,16 +4,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.*;
+import android.util.Log;
 import android.view.*;
 import android.os.*;
 import android.support.v7.widget.*;
-
 import java.util.*;
-
 import com.oude.dndclub.*;
 import com.oude.dndclub.adapter.*;
 import com.oude.dndclub.bean.*;
-import com.oude.dndclub.ui.activity.MainActivity;
 import com.oude.dndclub.ui.activity.ShopActivity;
 import com.oude.dndclub.utils.RecycleItemDecoration;
 
@@ -70,7 +68,7 @@ public class ShopFragment extends Fragment {
             Intent intent = new Intent();
             //获取设置
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            sourceType = sp.getString("source", "");
+            sourceType = sp.getString("source", "1");
             switch (position) {
                 case 0:
                     bundle.putString("shopType", "weapon");
@@ -79,6 +77,7 @@ public class ShopFragment extends Fragment {
                     intent.putExtras(bundle);
                     intent.setClass(getActivity(), ShopActivity.class);
                     startActivity(intent);
+                    Log.i("ShopFragment", "source:"+ sourceType);
                     break;
                 case 1:
                     bundle.putString("shopType", "armor");
