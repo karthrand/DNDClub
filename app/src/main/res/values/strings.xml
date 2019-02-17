@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">龙城助手</string>
+    <string name="app_name_en">DNDClub</string>
     <string name="nav_website">oudezhinu.site</string>
     <string name="settings">设置</string>
     <string name="information">关于</string>
@@ -10,6 +11,8 @@
     <string name="tab_shop">冒险商店</string>
     <string name="tab_book">大图书馆</string>
     <string name="tab_tool">功能集合</string>
+    <!-- 通用 -->
+    <string name="cancel">取消</string>
     <!-- 设置页 -->
     <string name="pref_header_general">通用</string>
     <string name="pref_header_database">数据库</string>
@@ -111,4 +114,21 @@
     <string name="weapon_price">武器价格:</string>
     <string name="weapon_weight">武器重量:</string>
     <string name="weapon_explain">武器介绍:</string>
+    <!-- Update -->
+    <string name="update_updating">正在更新，请稍后...</string>
+    <string name="update_cancel">取消更新.</string>
+    <string name="update_download_null">下载地址为空</string>
+    <string name="update_latest">当前已是最新版本</string>
+    <string name="update_force">此版本需要更新，程序即将退出</string>
+    <string name="update_to">更新到</string>
+    <string name="update_download">下载</string>
+    <string name="update_downloading">正在下载...</string>
+    <string name="update_permission_title">权限提醒</string>
+    <string name="update_permission_setting">权限设置</string>
+    <string name="update_msg1">更新软件需要您允许我们获取您的数据读写权限,否则将无法更新</string>
+    <string name="update_msg2">为了正常升级APP，请点击设置-高级设置-允许安装未知来源应用，本功能只限用于APP版本升级</string>
+    <string name="Error_TimeOut">更新超时！</string>
+    <string name="Error_Intenet">未知网络异常！</string>
+    <string name="Error_BadGatway">网络无法连接，请检查网络！</string>
+    <string name="update_updated">已是最新版本!</string>
 </resources>
