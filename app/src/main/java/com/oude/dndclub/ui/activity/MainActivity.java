@@ -3,10 +3,14 @@ package com.oude.dndclub.ui.activity;
 import com.oude.dndclub.R;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.*;
 import android.support.v4.widget.*;
@@ -36,11 +40,16 @@ import org.json.JSONObject;
 
 import android.util.Log;
 import android.view.*;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ConnectException;
+import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
@@ -64,11 +73,14 @@ public class MainActivity extends AppCompatActivity {
     private ToolFragment mToolFragment;
     //更新
     boolean IsDownLoad = false;
-    private String version_name, version_info, download_url;
+    private String version_name, version_info, download_url,comment,email_encode,name_encode;
     private Integer version_code;
     private updateInfo response = new updateInfo();
     //下载更新链接
     public static final String UPDATE_URL = "http://oudezhinu.site/download/dndclub.json";
+    public static final int Success = 200;
+    public static final int Fail = -1;
+    public static final int Repeat = 409;
     public static final int TimeOut = 504;
     public static final int InternalServerError = 500;
     public static final int BadGatWay = 502;
@@ -137,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_information:
                     /*
-                     Intent intent3 =new Intent(MainActivity.this, AboutActivity.class);
+                     Intent intent3 =new Intent(MainActivity.this, MainActivity.class);
                      startActivity(intent3);
                      */
                     break;
@@ -149,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                     getData();
                     break;
                 case R.id.nav_feedback:
+                    feedBack();
                     break;
                 default:
                     break;
@@ -250,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //------更新相关------
+    //Handle公共处理
     //根据返回码判断反馈是否发送成功
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -277,6 +290,15 @@ public class MainActivity extends AppCompatActivity {
                 case BadGatWay:
                     Toast.makeText(MainActivity.this, MainActivity.this.getResources().getText(R.string.Error_BadGatway), Toast.LENGTH_SHORT).show();
                     break;
+                case Success:
+                    Toast.makeText(MainActivity.this, MainActivity.this.getResources().getText(R.string.comment_success), Toast.LENGTH_SHORT).show();
+                    break;
+                case Fail:
+                    Toast.makeText(MainActivity.this, MainActivity.this.getResources().getText(R.string.comment_fail), Toast.LENGTH_SHORT).show();
+                    break;
+                case Repeat:
+                    Toast.makeText(MainActivity.this, MainActivity.this.getResources().getText(R.string.comment_repeat), Toast.LENGTH_SHORT).show();
+                    break;
                 default:
                     break;
             }
@@ -285,6 +307,7 @@ public class MainActivity extends AppCompatActivity {
 
     });
 
+    //------更新相关------
     //获取当前应用版本名称
     public String getVersionName(Context ctx) {
         String appVersioName = "";
@@ -336,7 +359,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call p1, IOException p2) {
-                Log.d("AboutActivity", p2.toString());
+                Log.d("MainActivity", p2.toString());
                 //判断超时异常
                 if (p2 instanceof SocketTimeoutException) {
                     Message message = new Message();
@@ -407,6 +430,147 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         //取消注册事件
         EventBus.getDefault().unregister(this);
+    }
+
+   //------反馈相关------
+    private void feedBack(){
+        //获取设置中当前用户名和邮箱
+        SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        String username = sp.getString("user_name", "匿名");
+        String email = sp.getString("user_mail", "null");
+        //获取之前存储的内容
+        SharedPreferences sp1 = getSharedPreferences("comment",MODE_PRIVATE);
+        String getComment = sp1.getString("pre_comment","");
+        //加密信息以供反馈使用
+        email_encode = java.net.URLEncoder.encode(email);
+        name_encode = java.net.URLEncoder.encode(username);
+        //显示反馈弹窗
+        AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
+        View detailView = LayoutInflater.from(MainActivity.this).inflate(R.layout.alertdialog_feedback, null);
+        builder.setTitle(MainActivity.this.getResources().getText(R.string.feedback));
+        builder.setView(detailView);
+        TextView user_name = detailView.findViewById(R.id.user_name);
+        TextView user_mail = detailView.findViewById(R.id.user_email);
+        final EditText comments = (EditText) detailView.findViewById(R.id.comments);
+        //取消前输入框中的内容
+        comments.setText(getComment);
+        user_name.setText(MainActivity.this.getResources().getText(R.string.current_user) + username);
+        user_mail.setText(MainActivity.this.getResources().getText(R.string.current_email) + email);
+        builder.setNegativeButton(MainActivity.this.getResources().getText(R.string.cancel), new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface p1, int p2)
+            {
+                //存储之前的输入内容
+                SharedPreferences.Editor editor =  getSharedPreferences("comment",MODE_PRIVATE).edit();
+                String commentData = comments.getText().toString();
+                editor.putString("pre_comment",commentData);
+                editor.apply();
+                if(!commentData.equals("")){
+                    Toast.makeText(MainActivity.this,MainActivity.this.getResources().getText(R.string.comment_cancel),Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        builder.setPositiveButton(MainActivity.this.getResources().getText(R.string.confirm), new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface p1, int p2)
+            {
+                SharedPreferences.Editor editor =  getSharedPreferences("comment",MODE_PRIVATE).edit();
+                //获取评论内容
+                comment = comments.getText().toString();
+                comment = java.net.URLEncoder.encode("客户端问题反馈:" + "\n" + comment);
+                sendRequestWithHttpClient();
+                //清空之前的评论
+                editor.putString("pre_comment","");
+                editor.apply();
+
+            }
+        });
+        builder.show();
+
+    }
+
+    //将反馈信息通过线程以评论方式发送给wordpress
+    private void sendRequestWithHttpClient()
+    {
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                HttpURLConnection connection = null;
+                String url_path = "http://oudezhinu.site/wp-comments-post.php";
+                Integer statusCode =0;
+                try
+                {
+                    //使用url加载路径
+                    URL url = new URL(url_path);
+                    //创建HttpURLConnection对象
+                    connection = (HttpURLConnection)url.openConnection();
+                    //设置头域
+                    connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                    //设置超时
+                    connection.setConnectTimeout(10000);
+                    connection.setReadTimeout(10000);
+                    //使用POST方法
+                    connection.setRequestMethod("POST");
+                    //使用输入流
+                    connection.setDoInput(false);
+                    //使用输出流
+                    connection.setDoOutput(true);
+                    //Post方式不能缓存,需手动设置为false
+                    connection.setUseCaches(false);
+                    //请求的body体
+                    String data = "comment=" + comment + "&author=" + name_encode + "&email=" + email_encode + "&url=&submit=%E5%8F%91%E8%A1%A8%E8%AF%84%E8%AE%BA&comment_post_ID=925&comment_parent=0";
+                    Log.d("MainActivity", data);
+                    //设置输出流，写body体
+                    DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
+                    outputStream.writeBytes(data);
+                    //outputStream.flush();
+                    //获取返回码
+                    statusCode = connection.getResponseCode();
+                    //使用handle处理结果
+                    Log.d("MainActivity", "返回码：" + statusCode.toString());
+
+                    //关闭流
+                    outputStream.close();
+
+                    //关闭连接
+                    connection.disconnect();
+
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+                finally
+                {
+                    //根据返回码返回不同的msg
+                    switch (statusCode)
+                    {
+                        case 200:
+                            Message message1 = new Message();
+                            message1.what = Success;
+                            handler.sendMessage(message1);
+                            break;
+                        case 409:
+                            Message message2 = new Message();
+                            message2.what = Repeat;
+                            handler.sendMessage(message2);
+                            break;
+                        default:
+                            Message message = new Message();
+                            message.what = Fail;
+                            handler.sendMessage(message);
+                            break;
+                    }
+                }
+            }
+        }).start();
+
     }
 
 }

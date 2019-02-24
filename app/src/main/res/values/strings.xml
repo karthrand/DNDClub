@@ -13,6 +13,7 @@
     <string name="tab_tool">功能集合</string>
     <!-- 通用 -->
     <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
     <!-- 设置页 -->
     <string name="pref_header_general">通用</string>
     <string name="pref_header_database">数据库</string>
@@ -131,4 +132,11 @@
     <string name="Error_Intenet">未知网络异常！</string>
     <string name="Error_BadGatway">网络无法连接，请检查网络！</string>
     <string name="update_updated">已是最新版本!</string>
+    <!-- Comment -->
+    <string name="current_user">当前用户：</string>
+    <string name="current_email">当前邮箱：</string>
+    <string name="comment_success">反馈成功！</string>
+    <string name="comment_fail">反馈失败！</string>
+    <string name="comment_repeat">请不要反馈重复内容！</string>
+    <string name="comment_cancel">评论取消，内容已自动保存!</string>
 </resources>

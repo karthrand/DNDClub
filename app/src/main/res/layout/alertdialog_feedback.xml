@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:id="@+id/feedbackView1"
+		android:background="@color/silver"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/feedbackView1"
+		android:id="@+id/user_name"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/user_name"
+		android:id="@+id/user_email"/>
+
+	<EditText
+		android:layout_width="match_parent"
+		android:inputType="textMultiLine"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/user_email"
+		android:ems="10"
+		android:layout_gravity="center"
+		android:hint="请输入反馈信息"
+		android:lines="6"
+		android:id="@+id/comments"/>
+
+</RelativeLayout>
+
