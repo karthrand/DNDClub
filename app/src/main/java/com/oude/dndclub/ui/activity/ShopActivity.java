@@ -59,4 +59,6 @@ public class ShopActivity extends AppCompatActivity {
 
         Toast.makeText(ShopActivity.this, shopType + "：" + shopTitle + "：" + shopSource, Toast.LENGTH_SHORT).show();
     }
+
+
 }
