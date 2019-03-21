@@ -81,4 +81,5 @@ public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.Vi
     public int getItemCount() {
         return mCommonList.size();
     }
+
 }

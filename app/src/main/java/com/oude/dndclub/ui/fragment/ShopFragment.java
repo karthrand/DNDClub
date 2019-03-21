@@ -12,13 +12,17 @@ import java.util.*;
 import com.oude.dndclub.*;
 import com.oude.dndclub.adapter.*;
 import com.oude.dndclub.bean.*;
+import com.oude.dndclub.ui.activity.MainActivity;
 import com.oude.dndclub.ui.activity.ShopActivity;
+import com.oude.dndclub.utils.DBManager;
 import com.oude.dndclub.utils.RecycleItemDecoration;
 
 public class ShopFragment extends Fragment {
     private List<CommonList> list = new ArrayList<>();
     //资料版本来源，3R或者5E
     private String sourceType = "";
+    public static final String DB_NAME = "shop.db";
+    public DBManager dbManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +46,9 @@ public class ShopFragment extends Fragment {
         CommonListAdapter adapter = new CommonListAdapter(getActivity(), list);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new ShopOnClickListener());
+        //导入db
+        dbManager = new DBManager(getActivity());
+        dbManager.importDB(DB_NAME);
 
     }
 

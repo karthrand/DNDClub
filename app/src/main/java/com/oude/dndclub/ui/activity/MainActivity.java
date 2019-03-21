@@ -125,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
         //注册更新事件
         EventBus.getDefault().register(this);
 
+
+
     }
 
     //toolbar加载菜单布局文件
