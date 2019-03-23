@@ -3,8 +3,10 @@ package com.oude.dndclub.ui.activity;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
@@ -13,23 +15,26 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.oude.dndclub.R;
-import com.oude.dndclub.adapter.CommonListAdapter;
 import com.oude.dndclub.adapter.DBListAdapter;
 import com.oude.dndclub.bean.ItemsList;
-import com.oude.dndclub.utils.DBManager;
 import com.oude.dndclub.utils.ShopDatabaseHelper;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ShopActivity extends AppCompatActivity {
@@ -73,6 +78,7 @@ public class ShopActivity extends AppCompatActivity {
     //存储取出来的item名字
 
     private List<ItemsList> list = new ArrayList<>();
+    private EditText et_weapon_3r_name,et_weapon_3r_source,et_weapon_3r_weapon_type,et_weapon_3r_atk_type,et_weapon_3r_usage_type,et_weapon_3r_dmg_type,et_weapon_3r_dmg_m,et_weapon_3r_dmg_s,et_weapon_3r_critical,et_weapon_3r_cost,et_weapon_3r_range_increment,et_weapon_3r_weight,et_weapon_3r_explain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -249,17 +255,35 @@ public class ShopActivity extends AppCompatActivity {
 
         @Override
         public void onClick(int position, View v) {
-		    /*
+
 			ItemsList itmsList = list.get(position);
 			//在初始化详情之前获取当前列的name
-			weapon_name = itmsList.getName();
-			switch (position)
-			{
-				default:
-				    Detail();
-					break;
-			}
-			*/
+            switch (Table_NAME) {
+                case "weapon_3r":
+                    weapon_3r_name = itmsList.getName();
+                    break;
+                case "armor_3r":
+
+                    break;
+                case "item_3r":
+
+                    break;
+                case "magic_3r":
+                    break;
+                case "weapon_5e":
+
+                    break;
+                case "armor_5e":
+
+                    break;
+                case "item_5e":
+
+                    break;
+                case "magic_5e":
+                    break;
+            }
+            ItemDetail();
+
         }
 
     }
@@ -481,6 +505,253 @@ public class ShopActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface p1, int p2) {
+            }
+        });
+        builder.show();
+    }
+
+    //item单击后查看详情
+    public void ItemDetail()
+    {
+        AlertDialog.Builder builder= new AlertDialog.Builder(ShopActivity.this);
+        builder.setTitle(this.getResources().getText(R.string.detail));
+        final SQLiteDatabase  db = shopdb.getReadableDatabase();
+        //使用自定义xml
+        switch (Table_NAME) {
+            case "weapon_3r":
+                View detailView_weapon_3r = LayoutInflater.from(ShopActivity.this).inflate(R.layout.weapon_3r_detail, null);
+                builder.setView(detailView_weapon_3r);
+                //详情页面view加载和控件绑定
+                et_weapon_3r_name = detailView_weapon_3r.findViewById(R.id.weapon_3r_name);
+                et_weapon_3r_source = detailView_weapon_3r.findViewById(R.id.weapon_3r_source);
+                et_weapon_3r_weapon_type = detailView_weapon_3r.findViewById(R.id.weapon_3r_weapon_type);
+                et_weapon_3r_atk_type = detailView_weapon_3r.findViewById(R.id.weapon_3r_atk_type);
+                et_weapon_3r_usage_type = detailView_weapon_3r.findViewById(R.id.weapon_3r_usage_type);
+                et_weapon_3r_dmg_type = detailView_weapon_3r.findViewById(R.id.weapon_3r_dmg_type);
+                et_weapon_3r_dmg_s = detailView_weapon_3r.findViewById(R.id.weapon_3r_dmg_s);
+                et_weapon_3r_dmg_m = detailView_weapon_3r.findViewById(R.id.weapon_3r_dmg_m);
+                et_weapon_3r_critical = detailView_weapon_3r.findViewById(R.id.weapon_3r_critical);
+                et_weapon_3r_range_increment = detailView_weapon_3r.findViewById(R.id.weapon_3r_range_increment);
+                et_weapon_3r_cost = detailView_weapon_3r.findViewById(R.id.weapon_3r_cost);
+                et_weapon_3r_weight = detailView_weapon_3r.findViewById(R.id.weapon_3r_weight);
+                et_weapon_3r_explain = detailView_weapon_3r.findViewById(R.id.weapon_3r_explain);
+                //修改数据库中取出数据后的字体大小和风格，尽量与旁边的TextView显示风格对齐
+                List<EditText> ets = new LinkedList<EditText>();
+                ets.add(et_weapon_3r_name);
+                ets.add(et_weapon_3r_source);
+                ets.add(et_weapon_3r_weapon_type);
+                ets.add(et_weapon_3r_atk_type);
+                ets.add(et_weapon_3r_usage_type);
+                ets.add(et_weapon_3r_dmg_type);
+                ets.add(et_weapon_3r_dmg_s);
+                ets.add(et_weapon_3r_dmg_m);
+                ets.add(et_weapon_3r_critical);
+                ets.add(et_weapon_3r_range_increment);
+                ets.add(et_weapon_3r_cost);
+                ets.add(et_weapon_3r_weight);
+                ets.add(et_weapon_3r_explain);
+                for (int i=0;i < ets.size();i++)
+                {
+                    ets.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+                    ets.get(i).setTypeface(Typeface.DEFAULT_BOLD);
+                }
+
+                //从数据库获取值在详情中显示
+                Cursor cursor = db.query(Table_NAME, null, "name=?", new String[]{weapon_3r_name}, null, null, null);
+                if (cursor.moveToFirst())
+                {
+                    do{
+                        //遍历获取数据库中的值并给EditText赋值
+                        weapon_3r_weapon_type = cursor.getString(cursor.getColumnIndex("weapon_type"));
+                        weapon_3r_atk_type = cursor.getString(cursor.getColumnIndex("atk_type"));
+                        weapon_3r_usage_type = cursor.getString(cursor.getColumnIndex("usage_type"));
+                        weapon_3r_dmg_type = cursor.getString(cursor.getColumnIndex("dmg_type"));
+                        weapon_3r_dmg_s = cursor.getString(cursor.getColumnIndex("dmg_s"));
+                        weapon_3r_dmg_m = cursor.getString(cursor.getColumnIndex("dmg_m"));
+                        weapon_3r_critical = cursor.getString(cursor.getColumnIndex("critical"));
+                        weapon_3r_explain = cursor.getString(cursor.getColumnIndex("explain"));
+                        weapon_3r_source = cursor.getString(cursor.getColumnIndex("source"));
+                        weapon_3r_cost = cursor.getFloat(cursor.getColumnIndex("cost"));
+                        weapon_3r_weight = cursor.getFloat(cursor.getColumnIndex("weight"));
+                        weapon_3r_range_increment = cursor.getInt(cursor.getColumnIndex("range_increment"));
+
+                        et_weapon_3r_name.setText(weapon_3r_name);
+                        et_weapon_3r_source.setText(weapon_3r_source);
+                        et_weapon_3r_weapon_type.setText(weapon_3r_weapon_type);
+                        et_weapon_3r_atk_type.setText(weapon_3r_atk_type);
+                        et_weapon_3r_usage_type.setText(weapon_3r_usage_type);
+                        et_weapon_3r_dmg_type.setText(weapon_3r_dmg_type);
+                        et_weapon_3r_dmg_s.setText(weapon_3r_dmg_s);
+                        et_weapon_3r_dmg_m.setText(weapon_3r_dmg_m);
+                        et_weapon_3r_critical.setText(weapon_3r_critical);
+                        et_weapon_3r_range_increment.setText(String.valueOf(weapon_3r_range_increment));
+                        et_weapon_3r_cost.setText(String.valueOf(weapon_3r_cost));
+                        et_weapon_3r_weight.setText(String.valueOf(weapon_3r_weight));
+                        et_weapon_3r_explain.setText(weapon_3r_explain);
+                        //存储在SharedPreferences中，用于在后面进行校验
+                        SharedPreferences.Editor editor =  getSharedPreferences("weapon_3r", MODE_PRIVATE).edit();
+                        editor.putString("weapon_3r_name", weapon_3r_name);
+                        editor.putString("weapon_3r_source", weapon_3r_source);
+                        editor.putString("weapon_3r_weapon_type", weapon_3r_weapon_type);
+                        editor.putString("weapon_3r_atk_type", weapon_3r_atk_type);
+                        editor.putString("weapon_3r_usage_type", weapon_3r_usage_type);
+                        editor.putString("weapon_3r_dmg_type", weapon_3r_dmg_type);
+                        editor.putString("weapon_3r_dmg_s", weapon_3r_dmg_s);
+                        editor.putString("weapon_3r_dmg_m", weapon_3r_dmg_m);
+                        editor.putString("weapon_3r_critical", weapon_3r_critical);
+                        editor.putInt("weapon_3r_range_increment", weapon_3r_range_increment);
+                        editor.putFloat("weapon_3r_cost", weapon_3r_cost);
+                        editor.putFloat("weapon_3r_weight", weapon_3r_weight);
+                        editor.putString("weapon_3r_explain", weapon_3r_explain);
+                        editor.apply();
+                    }while(cursor.moveToNext());
+
+                }
+                cursor.close();
+
+                break;
+            case "armor_3r":
+               // View detailView_armor_3r = LayoutInflater.from(ShopActivity.this).inflate(R.layout.armor_3r_detail, null);
+               // builder.setView(detailView_armor_3r);
+                break;
+            case "item_3r":
+               // View detailView_item_3r = LayoutInflater.from(ShopActivity.this).inflate(R.layout.item_3r_detail, null);
+               // builder.setView(detailView_item_3r);
+                break;
+            case "magic_3r":
+                break;
+            case "weapon_5e":
+               // View detailView_weapon_5e = LayoutInflater.from(ShopActivity.this).inflate(R.layout.weapon_5e_detail, null);
+               // builder.setView(detailView_weapon_5e);
+                break;
+            case "armor_5e":
+               // View detailView_armor_5e = LayoutInflater.from(ShopActivity.this).inflate(R.layout.armor_5e_detail, null);
+               // builder.setView(detailView_armor_5e);
+                break;
+            case "item_5e":
+               // View detailView_item_5e = LayoutInflater.from(ShopActivity.this).inflate(R.layout.item_5e_detail, null);
+              //  builder.setView(detailView_item_5e);
+                break;
+            case "magic_5e":
+                break;
+        }
+
+        //取消按钮和修改按钮，按钮的值都写在string文件中，此处使用java方式获取
+        builder.setPositiveButton(this.getResources().getText(R.string.cancel), new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface p1, int p2)
+            {
+                //取消目前不做啥，以后可以优化
+            }
+        });
+
+        builder.setNegativeButton(this.getResources().getText(R.string.modify), new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface p1, int p2) {
+
+                switch (Table_NAME) {
+                    case "weapon_3r":
+                        //检查Interget和float的值是否为空
+                        if (TextUtils.isEmpty(et_weapon_3r_cost.getText().toString().trim()) ||
+                                TextUtils.isEmpty(et_weapon_3r_weight.getText().toString().trim()) ||
+                                TextUtils.isEmpty(et_weapon_3r_range_increment.getText().toString().trim())
+                        )
+                        {
+                            Toast.makeText(ShopActivity.this, ShopActivity.this.getResources().getText(R.string.hint_value_null), Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            //修改检查，检查是否有更新
+                            //重新获取EditText的值
+                            weapon_3r_name = et_weapon_3r_name.getText().toString().trim();
+                            weapon_3r_source = et_weapon_3r_source.getText().toString().trim();
+                            weapon_3r_weapon_type = et_weapon_3r_weapon_type.getText().toString().trim();
+                            weapon_3r_atk_type = et_weapon_3r_atk_type.getText().toString().trim();
+                            weapon_3r_usage_type = et_weapon_3r_usage_type.getText().toString().trim();
+                            weapon_3r_dmg_type = et_weapon_3r_dmg_type.getText().toString().trim();
+                            weapon_3r_dmg_s = et_weapon_3r_dmg_s.getText().toString().trim();
+                            weapon_3r_dmg_m = et_weapon_3r_dmg_m.getText().toString().trim();
+                            weapon_3r_critical = et_weapon_3r_critical.getText().toString().trim();
+                            weapon_3r_range_increment = Integer.parseInt(et_weapon_3r_range_increment.getText().toString().trim());
+                            weapon_3r_cost = Float.parseFloat(et_weapon_3r_cost.getText().toString().trim());
+                            weapon_3r_weight = Float.parseFloat(et_weapon_3r_weight.getText().toString().trim());
+                            weapon_3r_explain = et_weapon_3r_explain.getText().toString();
+                            //将新的值和之前保存的比较，无改变则不更新数据库
+                            SharedPreferences sp = getSharedPreferences("weapon_3r", MODE_PRIVATE);
+                            if (weapon_3r_name.equals(sp.getString("weapon_3r_name", "")) &&
+                                    weapon_3r_source.equals(sp.getString("weapon_3r_source", "")) &&
+                                    weapon_3r_weapon_type.equals(sp.getString("weapon_3r_weapon_type", ""))  &&
+                                    weapon_3r_atk_type.equals(sp.getString("weapon_3r_atk_type", ""))  &&
+                                    weapon_3r_usage_type.equals(sp.getString("weapon_3r_usage_type", ""))  &&
+                                    weapon_3r_dmg_type.equals(sp.getString("weapon_3r_dmg_type", ""))  &&
+                                    weapon_3r_dmg_s.equals(sp.getString("weapon_3r_dmg_s", ""))  &&
+                                    weapon_3r_dmg_m.equals(sp.getString("weapon_3r_dmg_m", ""))  &&
+                                    weapon_3r_critical.equals(sp.getString("weapon_3r_critical", ""))  &&
+                                    weapon_3r_range_increment.equals(sp.getInt("weapon_3r_range_increment", 0))  &&
+                                    Math.abs(weapon_3r_cost - sp.getFloat("weapon_3r_cost", 0)) < 0.00001  &&
+                                    Math.abs(weapon_3r_weight - sp.getFloat("weapon_3r_weight", 0)) < 0.00001 &&
+                                    weapon_3r_explain.equals(sp.getString("weapon_3r_explain", "")))
+                            {
+                                Toast.makeText(ShopActivity.this, ShopActivity.this.getResources().getText(R.string.hint_modify), Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                //更新数据库
+                                ContentValues updateValue = new ContentValues();
+                                updateValue.put("name", weapon_3r_name);
+                                updateValue.put("source", weapon_3r_source);
+                                updateValue.put("weapon_type", weapon_3r_weapon_type);
+                                updateValue.put("atk_type", weapon_3r_atk_type);
+                                updateValue.put("usage_type", weapon_3r_usage_type);
+                                updateValue.put("dmg_type", weapon_3r_dmg_type);
+                                updateValue.put("dmg_s", weapon_3r_dmg_s);
+                                updateValue.put("dmg_m", weapon_3r_dmg_m);
+                                updateValue.put("critical", weapon_3r_critical);
+                                updateValue.put("range_increment", weapon_3r_range_increment);
+                                updateValue.put("cost", weapon_3r_cost);
+                                updateValue.put("weight", weapon_3r_weight);
+                                updateValue.put("explain", weapon_3r_explain);
+                                db.update(Table_NAME, updateValue, "name=?", new String[]{sp.getString("weapon_3r_name", "")});
+                                updateValue.clear();
+                                Toast.makeText(ShopActivity.this, ShopActivity.this.getResources().getText(R.string.hint_modify_success), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        break;
+                    case "armor_3r":
+
+                        break;
+                    case "item_3r":
+
+                        break;
+                    case "magic_3r":
+                        break;
+                    case "weapon_5e":
+
+                        break;
+                    case "armor_5e":
+
+                        break;
+                    case "item_5e":
+
+                        break;
+                    case "magic_5e":
+                        break;
+                }
+
+
+
+            }
+        });
+
+        builder.setNeutralButton(this.getResources().getText(R.string.buy), new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface p1, int p2)
+            {
+                Toast.makeText(ShopActivity.this, ShopActivity.this.getResources().getText(R.string.hint_to_achieve), Toast.LENGTH_SHORT).show();
             }
         });
         builder.show();
