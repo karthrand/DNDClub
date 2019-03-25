@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_gravity="top"
+	android:id="@+id/armor_3r_detail_RelativeLayout1">
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:background="#99CCFF"
+		android:id="@+id/armor_3r_detail_View1"/>
+
+	<LinearLayout
+		android:layout_below="@id/armor_3r_detail_View1"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/armor_3r_detail_LinearLayout0">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/armor_name"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+		<EditText
+			android:id="@+id/armor_3r_name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="5"
+			android:inputType="text" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_below="@id/armor_3r_detail_LinearLayout0"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/armor_3r_detail_LinearLayout1">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/armor_source"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+		<EditText
+			android:id="@+id/armor_3r_source"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="5"
+			android:inputType="text" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_below="@id/armor_3r_detail_LinearLayout1"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/armor_3r_detail_LinearLayout2">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/armor_type"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+		<EditText
+			android:id="@+id/armor_3r_armor"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="5"
+			android:inputType="text" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_below="@id/armor_3r_detail_LinearLayout2"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/armor_3r_detail_LinearLayout3">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/armor_bonus"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+		<EditText
+			android:id="@+id/armor_3r_armor_shield_bonus"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="5"
+			android:inputType="numberSigned" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_below="@id/armor_3r_detail_LinearLayout3"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/armor_3r_detail_LinearLayout4">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/dex_bonus"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+		<EditText
+			android:id="@+id/armor_3r_maximum_dex_bonus"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="5"
+			android:inputType="numberSigned" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_below="@id/armor_3r_detail_LinearLayout4"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/armor_3r_detail_LinearLayout5">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/armor_minus"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+		<EditText
+			android:id="@+id/armor_3r_armor_check_penalty"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="5"
+			android:inputType="numberSigned" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_below="@id/armor_3r_detail_LinearLayout5"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/armor_3r_detail_LinearLayout6">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/magic_failue"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+		<EditText
+			android:id="@+id/armor_3r_arcane_spell_failure_chance"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="5"
+			android:inputType="numberSigned" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="%"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textSize="15sp"
+			android:textStyle="bold"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:layout_below="@id/armor_3r_detail_LinearLayout6"
+		android:id="@+id/armor_3r_detail_LinearLayout7">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/armor_price"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+		<EditText
+			android:id="@+id/armor_3r_cost"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="5"
+			android:inputType="numberDecimal" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/gold"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textSize="15sp"
+			android:textStyle="bold"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:layout_below="@id/armor_3r_detail_LinearLayout7"
+		android:id="@+id/armor_3r_detail_LinearLayout8">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/armor_weight"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+		<EditText
+			android:id="@+id/armor_3r_weight"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="5"
+			android:inputType="numberDecimal" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/pound"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textSize="15sp"
+			android:textStyle="bold"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_below="@id/armor_3r_detail_LinearLayout8"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/armor_3r_detail_LinearLayout9">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/armor_explain"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+		<EditText
+			android:id="@+id/armor_3r_explain"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:ems="0"
+			android:inputType="text|textMultiLine" />
+
+	</LinearLayout>
+
+</RelativeLayout>
+
