@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:layout_gravity="top"
@@ -10,7 +9,7 @@
 	<View
 		android:layout_width="match_parent"
 		android:layout_height="1dp"
-		android:background="#99CCFF"
+		android:background="@color/colorPrimary"
 		android:id="@+id/armor_3r_detail_View1"/>
 
 	<LinearLayout
@@ -197,12 +196,62 @@
 	</LinearLayout>
 
 	<LinearLayout
+		android:layout_below="@id/armor_3r_detail_LinearLayout6"
 		android:orientation="horizontal"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_centerHorizontal="true"
-		android:layout_below="@id/armor_3r_detail_LinearLayout6"
 		android:id="@+id/armor_3r_detail_LinearLayout7">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/speed_30ft"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/armor_3r_speed_30ft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:inputType="numberSigned" />
+
+	</LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/armor_3r_detail_LinearLayout7"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/armor_3r_detail_LinearLayout8">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/speed_20ft"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/armor_3r_speed_20ft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:inputType="numberSigned" />
+
+    </LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:layout_below="@id/armor_3r_detail_LinearLayout8"
+		android:id="@+id/armor_3r_detail_LinearLayout9">
 
 		<TextView
 			android:layout_width="wrap_content"
@@ -234,8 +283,8 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_centerHorizontal="true"
-		android:layout_below="@id/armor_3r_detail_LinearLayout7"
-		android:id="@+id/armor_3r_detail_LinearLayout8">
+		android:layout_below="@id/armor_3r_detail_LinearLayout9"
+		android:id="@+id/armor_3r_detail_LinearLayout10">
 
 		<TextView
 			android:layout_width="wrap_content"
@@ -263,12 +312,12 @@
 	</LinearLayout>
 
 	<LinearLayout
-		android:layout_below="@id/armor_3r_detail_LinearLayout8"
+		android:layout_below="@id/armor_3r_detail_LinearLayout10"
 		android:orientation="horizontal"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_centerHorizontal="true"
-		android:id="@+id/armor_3r_detail_LinearLayout9">
+		android:id="@+id/armor_3r_detail_LinearLayout11">
 
 		<TextView
 			android:layout_width="wrap_content"
